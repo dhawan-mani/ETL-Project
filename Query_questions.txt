@@ -1,0 +1,5 @@
+ /* which genre has the highest votes. */	
+/* which movie had the highest rating regardless of the genre. */
+/* which age and gender group likes what genre of movies based off of ratings. */
+/* which actors have acted in the highest number of movies.*/
+/* which directors, writers, actors participated in the highest number of the movies. */

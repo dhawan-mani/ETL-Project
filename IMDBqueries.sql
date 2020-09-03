@@ -14,13 +14,25 @@ from names as n
 inner join titles as t on n.imdb_name_id = t.imdb_name_id
 inner join movies as m on t.imdb_title_id = m.imdb_title_id
 inner join movie_demo as md on md.imdb_title_id = m.imdb_title_id
-where n.name like '%Tom Cruise%' and m.year_published > 2010  or
-n.name like '%Tom Cruise%' and m.year_published > 2010 
+where n.name like '%Tom Cruise%' and m.year_published > 2010 
 group by n.name
 order by count(m.title) desc;
 
 /*where t.category = 'actor'*/ /*and md.genre = 'Action'*/
 /*or t.category = 'actress'*/ /*and md.genre = 'Action'*/
+
+/*Count of times actors/actresses have been in action movies since 2010*/
+select n.name, count(m.title)
+from names as n 
+inner join titles as t on n.imdb_name_id = t.imdb_name_id
+inner join movies as m on t.imdb_title_id = m.imdb_title_id
+inner join movie_demo as md on md.imdb_title_id = m.imdb_title_id
+where t.category = 'actor' and md.genre = 'Action' and m.year_published > 2010  or
+t.category = 'actress' and md.genre = 'Action' and m.year_published > 2010 
+group by n.name
+order by count(m.title) desc;
+
+
 
 /*How many movies did Humphrey Bogart act in?*/
 select count(title) from movies
